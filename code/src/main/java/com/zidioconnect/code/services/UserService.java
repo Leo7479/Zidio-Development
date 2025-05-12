@@ -4,12 +4,14 @@ package com.zidioconnect.code.services;
 
 import com.zidioconnect.code.models.User;
 import com.zidioconnect.code.repositories.IUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
     private final IUserRepository userRepository;
 
+    @Autowired
     public UserService(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
