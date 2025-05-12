@@ -31,16 +31,4 @@ public class UserController {
     }
 
     // Combined search endpoint (optional)
-    @GetMapping
-    public User findUser(
-            @RequestParam(required = false) Long id,
-            @RequestParam(required = false) String email) {
-        if (id != null) {
-            return userService.getUserById(id);
-        }
-        if (email != null) {
-            return userService.getUserByEmail(email);
-        }
-        throw new IllegalArgumentException("Must provide either id or email");
-    }
 }

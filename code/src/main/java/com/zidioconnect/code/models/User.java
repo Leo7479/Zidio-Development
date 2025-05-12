@@ -30,7 +30,9 @@ public class User {
         this.role = null;
     }
 
-
+    public long getId() {
+        return id;
+    }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
@@ -42,6 +44,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
+                "id=" + id+
                 ", email='" + email + '\'' +
                 ", password='[PROTECTED]'" +  // Never expose passwords in logs
                 ", role=" + (role != null ? role.name() : "null") +

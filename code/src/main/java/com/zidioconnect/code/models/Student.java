@@ -30,7 +30,13 @@ public class Student {
         this.resumeLink = resumeLink;
         this.skills = skills;
     }
+
+
 // Getters and setters
+
+    public long getId() {
+        return id;
+    }
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
@@ -42,6 +48,7 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
+                "id=" + id+
                 ", user=" + (user != null ? "user" : "null") +
                 ", resumeLink='" + resumeLink + '\'' +
                 ", skills='" + skills + '\'' +
