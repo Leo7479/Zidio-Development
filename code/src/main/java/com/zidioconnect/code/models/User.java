@@ -30,6 +30,13 @@ public class User {
         this.role = null;
     }
 
+    public User(String email, String password, Role role) {
+        super();
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     public long getId() {
         return id;
     }

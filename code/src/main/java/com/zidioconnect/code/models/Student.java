@@ -15,7 +15,7 @@ public class Student {
     @Column(name = "resume_link")
     private String resumeLink;
 
-    @Column
+    @Column(name="skills")
     private String skills;
 
     // Constructor with initialization
@@ -26,24 +26,35 @@ public class Student {
     }
 
     public Student(User user, String resumeLink, String skills) {
+        super();
         this.user = user;
         this.resumeLink = resumeLink;
         this.skills = skills;
     }
 
-
-// Getters and setters
-
+    // Getters and setters
     public long getId() {
         return id;
     }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-    public String getResumeLink() { return resumeLink; }
-    public void setResumeLink(String resumeLink) { this.resumeLink = resumeLink; }
-    public String getSkills() { return skills; }
-    public void setSkills(String skills) { this.skills = skills; }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public String getResumeLink() {
+        return resumeLink;
+    }
+    public void setResumeLink(String resumeLink) {
+        this.resumeLink = resumeLink;
+    }
+    public String getSkills() {
+        return skills;
+    }
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
 
     @Override
     public String toString() {
