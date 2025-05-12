@@ -1,5 +1,4 @@
 package com.zidioconnect.code.models;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -7,7 +6,7 @@ import jakarta.persistence.*;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -16,59 +15,58 @@ public class Student {
     @Column(name = "resume_link")
     private String resumeLink;
 
-    @Column
-    private String skills; // Could also be @ElementCollection for multiple skills
+    @Column(name="skills")
+    private String skills;
 
-    // Constructors
-    public Student() {}
+    // Constructor with initialization
+    public Student() {
+        this.user = null;
+        this.resumeLink = null;
+        this.skills = null;
+    }
 
     public Student(User user, String resumeLink, String skills) {
+        super();
         this.user = user;
         this.resumeLink = resumeLink;
         this.skills = skills;
     }
 
-    // Getters and Setters
-    public Long getId() {
+    // Getters and setters
+    public long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
-
     public String getResumeLink() {
         return resumeLink;
     }
-
     public void setResumeLink(String resumeLink) {
         this.resumeLink = resumeLink;
     }
-
     public String getSkills() {
         return skills;
     }
-
     public void setSkills(String skills) {
         this.skills = skills;
     }
 
-    // toString() (optional)
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", user=" + user +
+                "id=" + id+
+                ", user=" + (user != null ? "user" : "null") +
                 ", resumeLink='" + resumeLink + '\'' +
                 ", skills='" + skills + '\'' +
                 '}';
     }
+
 }
+
+
+
