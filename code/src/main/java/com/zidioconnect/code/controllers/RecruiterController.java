@@ -1,7 +1,7 @@
 package com.zidioconnect.code.controllers;
 
 import com.zidioconnect.code.models.Recruiter;
-import com.zidioconnect.code.services.RecruiterService;
+import com.zidioconnect.code.services.IRecruiterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/recruiter")
 public class RecruiterController {
-    private final RecruiterService recruiterService;
+    private final IRecruiterService recruiterService;
     @Autowired
-    public RecruiterController(RecruiterService  recruiterService){
+    public RecruiterController(IRecruiterService  recruiterService){
         this.recruiterService = recruiterService;
     }
 
