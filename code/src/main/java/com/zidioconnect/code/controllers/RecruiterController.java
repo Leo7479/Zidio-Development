@@ -36,7 +36,7 @@ public class RecruiterController {
         }
     }
 
-    @GetMapping("/find")
+    @GetMapping("/u")
     public ResponseEntity<Recruiter> getByUser_Id(@RequestParam("user_id") long user_id){
         try {
             return new ResponseEntity<>(recruiterService.getByUser_Id(user_id), HttpStatus.OK);

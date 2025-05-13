@@ -1,23 +1,23 @@
 package com.zidioconnect.code.controllers;
 
 import com.zidioconnect.code.models.User;
-import com.zidioconnect.code.services.UserService;
+import com.zidioconnect.code.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    private final UserService userService;
+    private final IUserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(IUserService userService) {
         this.userService = userService;
     }
 
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+        return userService.create(user);
     }
 
     @GetMapping("/{id}")

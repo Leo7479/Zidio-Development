@@ -16,11 +16,6 @@ public class UserService implements IUserService{
         this.userRepository = userRepository;
     }
 
-    @Autowired
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();

@@ -3,10 +3,12 @@ package com.zidioconnect.code.services;
 import com.zidioconnect.code.models.Recruiter;
 import com.zidioconnect.code.repositories.IRecruiterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class RecruiterService implements IRecruiterService {
     private final IRecruiterRepository recruiterRepo;
     @Autowired

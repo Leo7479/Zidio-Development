@@ -16,7 +16,7 @@ public class StudentService implements IStudentService{
         this.studentRepository = studentRepository;
     }
     @Override
-    public List<Student> getAll() {
+    public List<Student> getAll(){
         return studentRepository.findAll();
     }
 }
