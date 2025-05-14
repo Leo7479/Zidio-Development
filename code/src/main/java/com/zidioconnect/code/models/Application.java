@@ -21,7 +21,12 @@ public class Application {
     @Column(name = "status")
     private String status;  // e.g., "applied", "reviewed", "rejected"
 
-    public Application() {}
+    public Application() {
+        this.id = 0L;
+        this.jobPosting = null;
+        this.student = null;
+        this.status = null;
+    }
 
     public Application(JobPosting jobPosting, Student student, String status) {
         this.jobPosting = jobPosting;
@@ -61,8 +66,8 @@ public class Application {
     public String toString() {
         return "Application{" +
                 "id=" + id +
-                ", jobPosting=" + jobPosting.getId() +
-                ", student=" + student.getId() +
+                ", jobPosting=" + (jobPosting != null ? jobPosting.getId() : "null") +
+                ", student=" + (student != null ? student.getId() : "null") +
                 ", status='" + status + '\'' +
                 '}';
     }
