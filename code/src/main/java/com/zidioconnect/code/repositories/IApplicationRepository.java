@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface IApplicationRepository extends JpaRepository<Application, Long> {
-    List<Application> findByStudent(Student student);
-    List<Application> findByJobPosting(JobPosting jobPosting);
+    List<Application> findByStudent_Id(long studentId);
+    List<Application> findByJobPosting_Id(long jobId);
 }
+
