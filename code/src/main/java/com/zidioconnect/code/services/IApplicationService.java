@@ -1,0 +1,11 @@
+package com.zidioconnect.code.services;
+
+import com.zidioconnect.code.models.Application;
+
+import java.util.List;
+
+public interface IApplicationService {
+    Application createApplication(Application application);
+    List<Application> getApplicationsByStudent(long studentId);
+    List<Application> getApplicationsByJob(long jobId);
+}
