@@ -20,7 +20,7 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping("/apply")
+    @PostMapping("/create")
     public ResponseEntity<?> applyToJob(@RequestBody Application application) {
         try {
             if (application == null || application.getStudent() == null || application.getJobPosting() == null) {
@@ -58,5 +58,15 @@ public class ApplicationController {
         } catch (Exception e) {
             return new ResponseEntity<>("Error fetching applications: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Application deleteApplicationById(@PathVariable long id){
+        return applicationService.deleteById(id);
+    }
+
+    @PutMapping("/update")
+    public Application update(@RequestBody Application application){
+        return applicationService.update(application);
     }
 }

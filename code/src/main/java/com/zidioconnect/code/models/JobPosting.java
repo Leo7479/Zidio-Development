@@ -2,6 +2,8 @@ package com.zidioconnect.code.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="job_posts")
 public class JobPosting {
@@ -20,18 +22,23 @@ public class JobPosting {
     @JoinColumn(name="recruiter_id")
     private Recruiter recruiter;
 
+    @OneToMany(mappedBy = "jobPosting")
+    private List<Application> applications;
+
     // Constructors
     public JobPosting(){
         this.id=0;
         this.title=null;
         this.description=null;
         this.recruiter=null;
+        this.applications = null;
     }
-    public JobPosting(String title, String description, Recruiter recruiter){
+    public JobPosting(String title, String description, Recruiter recruiter, List<Application> applications){
         super();
         this.title=title;
         this.description=description;
         this.recruiter=recruiter;
+        this.applications = applications;
     }
     // Getters and Setters
 
@@ -57,15 +64,24 @@ public class JobPosting {
         this.recruiter = recruiter;
     }
 
-    // toString
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+// toString
+
 
     @Override
     public String toString() {
-        return "JobPostings{" +
+        return "JobPosting{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", recruiter=" + recruiter +
+                ", applications=" + applications +
                 '}';
     }
 }

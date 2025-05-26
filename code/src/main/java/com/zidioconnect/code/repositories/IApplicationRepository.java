@@ -4,6 +4,7 @@ import com.zidioconnect.code.models.Application;
 import com.zidioconnect.code.models.Student;
 import com.zidioconnect.code.models.JobPosting;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

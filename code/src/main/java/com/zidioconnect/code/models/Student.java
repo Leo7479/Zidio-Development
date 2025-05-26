@@ -1,6 +1,8 @@
 package com.zidioconnect.code.models;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "students")
 public class Student {
@@ -18,18 +20,23 @@ public class Student {
     @Column(name="skills")
     private String skills;
 
+    @OneToMany(mappedBy = "student")
+    private List<Application> applications;
+
     // Constructor with initialization
     public Student() {
         this.user = null;
         this.resumeLink = null;
         this.skills = null;
+        this.applications = null;
     }
 
-    public Student(User user, String resumeLink, String skills) {
+    public Student(User user, String resumeLink, String skills, List<Application> applications) {
         super();
         this.user = user;
         this.resumeLink = resumeLink;
         this.skills = skills;
+        this.applications = applications;
     }
 
     // Getters and setters
@@ -55,6 +62,8 @@ public class Student {
     public void setSkills(String skills) {
         this.skills = skills;
     }
+    public List<Application> getApplications(){ return this.applications;}
+    public void setApplications(List<Application> applications) { this.applications = applications;}
 
     @Override
     public String toString() {
@@ -63,6 +72,7 @@ public class Student {
                 ", user=" + (user != null ? "user" : "null") +
                 ", resumeLink='" + resumeLink + '\'' +
                 ", skills='" + skills + '\'' +
+                ", Applications= '"+applications + "'" +
                 '}';
     }
 

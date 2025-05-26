@@ -55,4 +55,15 @@ public class ApplicationService implements IApplicationService {
     public List<Application> getApplicationsByJob(long jobId) {
         return applicationRepository.findByJobPosting_Id(jobId);
     }
+
+    @Override
+    public Application deleteById(long id){
+        Optional<Application> application= applicationRepository.findById(id);
+        return application.orElse(null);
+    }
+
+    @Override
+    public Application update(Application application){
+        return applicationRepository.save(application);
+    }
 }

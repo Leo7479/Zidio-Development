@@ -2,9 +2,12 @@ package com.zidioconnect.code.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "applications")
 public class Application {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,11 +18,11 @@ public class Application {
     private JobPosting jobPosting;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name="student_id")
     private Student student;
 
     @Column(name = "status")
-    private String status;  // e.g., "applied", "reviewed", "rejected"
+    private Status status;
 
     public Application() {
         this.id = 0L;
@@ -28,7 +31,7 @@ public class Application {
         this.status = null;
     }
 
-    public Application(JobPosting jobPosting, Student student, String status) {
+    public Application(JobPosting jobPosting, Student student, Status status) {
         this.jobPosting = jobPosting;
         this.student = student;
         this.status = status;
@@ -50,15 +53,15 @@ public class Application {
         return student;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudent(Student students) {
+        this.student = students;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -67,7 +70,7 @@ public class Application {
         return "Application{" +
                 "id=" + id +
                 ", jobPosting=" + (jobPosting != null ? jobPosting.getId() : "null") +
-                ", student=" + (student != null ? student.getId() : "null") +
+                ", student=" + (student != null ? student : "null") +
                 ", status='" + status + '\'' +
                 '}';
     }

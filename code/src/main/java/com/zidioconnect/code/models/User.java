@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-    public enum Role {
-        STUDENT, RECRUITER, ADMIN
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
