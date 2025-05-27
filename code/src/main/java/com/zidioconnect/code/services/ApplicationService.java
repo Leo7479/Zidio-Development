@@ -30,6 +30,11 @@ public class ApplicationService implements IApplicationService {
     }
 
     @Override
+    public List<Application> getAll(){
+        return applicationRepository.findAll();
+    }
+
+    @Override
     public Application createApplication(Application application) {
         // Check if the Student and JobPosting exist using findBy methods
         Optional<Student> student = studentRepository.findById(application.getStudent().getId());

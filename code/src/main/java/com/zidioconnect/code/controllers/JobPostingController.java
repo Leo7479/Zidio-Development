@@ -45,7 +45,7 @@ public class JobPostingController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<JobPosting> create(@RequestBody JobPosting jobPosting){
         try{
             return new ResponseEntity<>(jobPostingService.create(jobPosting), HttpStatus.OK);

@@ -20,6 +20,11 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
+    @GetMapping
+    public List<Application> getAll(){
+        return applicationService.getAll();
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> applyToJob(@RequestBody Application application) {
         try {

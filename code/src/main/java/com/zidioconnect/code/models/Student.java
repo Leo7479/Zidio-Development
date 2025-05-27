@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,23 +20,38 @@ public class Student {
     @Column(name="skills")
     private String skills;
 
+    @Column(name="education")
+    private String education;
+
+    @Column(name="year_of_passing")
+    private int yearOfPassing;
+
     @OneToMany(mappedBy = "student")
-    private List<Application> applications;
+    private List<Experience> experiences;
+
+    @OneToMany(mappedBy = "student")
+    private List<Certification> certifications;
+
 
     // Constructor with initialization
     public Student() {
         this.user = null;
         this.resumeLink = null;
         this.skills = null;
-        this.applications = null;
+        this.certifications = null;
+        this.education = null;
+        this.yearOfPassing = 0;
     }
 
-    public Student(User user, String resumeLink, String skills, List<Application> applications) {
+    public Student(User user, String resumeLink, String skills, String education, int yearOfPassing, List<Certification> certifications, List<Experience> experiences) {
         super();
         this.user = user;
         this.resumeLink = resumeLink;
         this.skills = skills;
-        this.applications = applications;
+        this.education = education;
+        this.yearOfPassing = yearOfPassing;
+        this.certifications = certifications;
+        this.experiences = experiences;
     }
 
     // Getters and setters
@@ -62,20 +77,52 @@ public class Student {
     public void setSkills(String skills) {
         this.skills = skills;
     }
-    public List<Application> getApplications(){ return this.applications;}
-    public void setApplications(List<Application> applications) { this.applications = applications;}
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public int getYearOfPassing() {
+        return yearOfPassing;
+    }
+
+    public void setYearOfPassing(int yearOfPassing) {
+        this.yearOfPassing = yearOfPassing;
+    }
+
+    public List<Certification> getCertifications() {
+        return certifications;
+    }
+
+    public void setCertifications(List<Certification> certifications) {
+        this.certifications = certifications;
+    }
+
+    public List<Experience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(List<Experience> experiences) {
+        this.experiences = experiences;
+    }
 
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id+
-                ", user=" + (user != null ? "user" : "null") +
+                "id=" + id +
+                ", user=" + user +
                 ", resumeLink='" + resumeLink + '\'' +
                 ", skills='" + skills + '\'' +
-                ", Applications= '"+applications + "'" +
+                ", education='" + education + '\'' +
+                ", yearOfPassing=" + yearOfPassing +
+                ", certifications=" + certifications +
+                ", experiences=" + experiences +
                 '}';
     }
-
 }
 
 

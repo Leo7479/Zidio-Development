@@ -22,8 +22,15 @@ public class JobPosting {
     @JoinColumn(name="recruiter_id")
     private Recruiter recruiter;
 
-    @OneToMany(mappedBy = "jobPosting")
-    private List<Application> applications;
+    @Column(name="salary")
+    private long salary;
+
+    @Column(name="skills_required")
+    private String skillsRequired;
+
+    @Column(name="years_of_experience")
+    private int yearsOfExperience;
+
 
     // Constructors
     public JobPosting(){
@@ -31,14 +38,15 @@ public class JobPosting {
         this.title=null;
         this.description=null;
         this.recruiter=null;
-        this.applications = null;
+        this.salary = 0L;
     }
-    public JobPosting(String title, String description, Recruiter recruiter, List<Application> applications){
+    public JobPosting(String title, String description, Recruiter recruiter, long salary, String skillsRequired){
         super();
         this.title=title;
         this.description=description;
         this.recruiter=recruiter;
-        this.applications = applications;
+        this.salary = salary;
+        this.skillsRequired = skillsRequired;
     }
     // Getters and Setters
 
@@ -64,14 +72,31 @@ public class JobPosting {
         this.recruiter = recruiter;
     }
 
-    public List<Application> getApplications() {
-        return applications;
+    public long getSalary() {
+        return salary;
     }
 
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    public void setSalary(long salary) {
+        this.salary = salary;
     }
-// toString
+
+    public String getSkillsRequired() {
+        return skillsRequired;
+    }
+
+    public void setSkillsRequired(String skillsRequired) {
+        this.skillsRequired = skillsRequired;
+    }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
+    // toString
 
 
     @Override
@@ -81,7 +106,9 @@ public class JobPosting {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", recruiter=" + recruiter +
-                ", applications=" + applications +
+                ", salary=" + salary +
+                ", skillsRequired='" + skillsRequired + '\'' +
+                ", yearsOfExperience=" + yearsOfExperience +
                 '}';
     }
 }
